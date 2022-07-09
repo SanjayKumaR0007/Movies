@@ -1,17 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import { render } from "react-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import Homepage from "./Homepage";
+import Moviesdetail from "./Moviesdetail";
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function App() {
+    return (
+            <BrowserRouter>
+            <Routes>
+            <Route path="/moviesdetail/:id" element={<Moviesdetail />}/> 
+                <Route path="/" element={<Homepage />}/> 
+            </Routes>
+            </BrowserRouter>
+        );
+}
+render(<App />, document.getElementById("root"));
+
+
